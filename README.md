@@ -1,12 +1,49 @@
-# NtRaiseHardError (ntdll)
- 
-This is an undocumented function in ntdll.dll. Causes a BSOD (Blue Screen of Death) with the error specified by the ErrorStatus parameter.
+# Trigger-BSOD
+
+## NtRaiseHardError
 
 ```c++
-UINT NtRaiseHardError(NTSTATUS ErrorStatus, ULONG NumberOfParameters, PUNICODE_STRING UnicodeStringParameterMask OPTIONAL, PVOID Parameters, HARDERROR_RESPONSE_OPTION ResponseOption, PHARDERROR_RESPONSE Response);
+NtRaiseHardError(
+  IN  NTSTATUS                  ErrorStatus,
+  IN  ULONG                     NumberOfParameters,
+  IN  PUNICODE_STRING           UnicodeStringParameterMask OPTIONAL,
+  IN  PVOID                     *Parameters,
+  IN  HARDERROR_RESPONSE_OPTION ResponseOption,
+  OUT PHARDERROR_RESPONSE       Response
+);
 ```
 
- - PHARDERROR_RESPONSE_OPTION
+## ZwRaiseHardError
+
+```c++
+ZwRaiseHardError(
+  IN  NTSTATUS                  ErrorStatus,
+  IN  ULONG                     NumberOfParameters,
+  IN  PUNICODE_STRING           UnicodeStringParameterMask OPTIONAL,
+  IN  PVOID                     *Parameters,
+  IN  HARDERROR_RESPONSE_OPTION ResponseOption,
+  OUT PHARDERROR_RESPONSE       Response
+);
+```
+
+## Parameters
+
+### PUNICODE_STRING
+
+```c++
+#include <SubAuth.h>
+```
+
+```c++
+typedef struct _UNICODE_STRING {
+	USHORT Length;
+	USHORT MaximumLength;
+	PWSTR Buffer;
+} UNICODE_STRING, *PUNICODE_STRING;
+```
+
+### HARDERROR_RESPONSE_OPTION
+
 ```c++
 typedef enum _HARDERROR_RESPONSE_OPTION {
 	OptionAbortRetryIgnore,
@@ -19,7 +56,8 @@ typedef enum _HARDERROR_RESPONSE_OPTION {
 } HARDERROR_RESPONSE_OPTION, *PHARDERROR_RESPONSE_OPTION;
 ```
 
- - PHARDERROR_RESPONSE
+### PHARDERROR_RESPONSE
+
 ```c++
 typedef enum _HARDERROR_RESPONSE {
 	ResponseReturnToCaller,
@@ -34,23 +72,12 @@ typedef enum _HARDERROR_RESPONSE {
 } HARDERROR_RESPONSE, *PHARDERROR_RESPONSE;
 ```
 
- - PUNICODE_STRING
-```c++
-#include <SubAuth.h>
-```
-
-```c++
-typedef struct _UNICODE_STRING {
-	USHORT Length;
-	USHORT MaximumLength;
-	PWSTR Buffer;
-} UNICODE_STRING, *PUNICODE_STRING;
-```
-
 # Build
 
-Build with MinGW64 (from MSYS2), C++ 11.
+With `MinGW64` (from MSYS2), `CMake 3.22`, `C++11`.
 
 # VirusTotal
+| ![NtRaiseHardError](https://user-images.githubusercontent.com/12462465/170830231-0f0ff19e-c732-4d06-873c-ada1c46800aa.png) | ![ZwRaiseHardError](https://user-images.githubusercontent.com/12462465/170830234-c041acaa-2b98-490a-a421-586c444a8907.png) |
+| ---- | ---- |
 
-![VirusTotal Result](https://user-images.githubusercontent.com/12462465/170809163-5c77a270-7126-4c40-9a18-9eeecfae3d54.png)
+

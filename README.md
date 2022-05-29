@@ -1,6 +1,10 @@
 # Trigger-BSOD
 
-## NtRaiseHardError
+## NtRaiseHardError & ZwRaiseHardError
+
+Both functions are undocumented Windows APIs (NTAPI) included in `ntdll.dll`, can cause BlueScreen (BSOD, Blue Screen of Death) with certain parameters.
+
+### NtRaiseHardError
 
 ```c++
 NtRaiseHardError(
@@ -13,7 +17,7 @@ NtRaiseHardError(
 );
 ```
 
-## ZwRaiseHardError
+### ZwRaiseHardError
 
 ```c++
 ZwRaiseHardError(
@@ -26,9 +30,9 @@ ZwRaiseHardError(
 );
 ```
 
-## Parameters
+### Parameters
 
-### PUNICODE_STRING
+#### PUNICODE_STRING
 
 ```c++
 #include <SubAuth.h>
@@ -42,7 +46,7 @@ typedef struct _UNICODE_STRING {
 } UNICODE_STRING, *PUNICODE_STRING;
 ```
 
-### HARDERROR_RESPONSE_OPTION
+#### HARDERROR_RESPONSE_OPTION
 
 ```c++
 typedef enum _HARDERROR_RESPONSE_OPTION {
@@ -56,7 +60,7 @@ typedef enum _HARDERROR_RESPONSE_OPTION {
 } HARDERROR_RESPONSE_OPTION, *PHARDERROR_RESPONSE_OPTION;
 ```
 
-### PHARDERROR_RESPONSE
+#### PHARDERROR_RESPONSE
 
 ```c++
 typedef enum _HARDERROR_RESPONSE {
@@ -72,11 +76,11 @@ typedef enum _HARDERROR_RESPONSE {
 } HARDERROR_RESPONSE, *PHARDERROR_RESPONSE;
 ```
 
-# Build
+## Build
 
 With `MinGW64` (from MSYS2), `CMake 3.22`, `C++11`.
 
-# VirusTotal
+## VirusTotal
 | ![NtRaiseHardError](https://user-images.githubusercontent.com/12462465/170830231-0f0ff19e-c732-4d06-873c-ada1c46800aa.png) | ![ZwRaiseHardError](https://user-images.githubusercontent.com/12462465/170830234-c041acaa-2b98-490a-a421-586c444a8907.png) |
 | ---- | ---- |
 

@@ -4,6 +4,8 @@
 
 Both functions are undocumented Windows APIs (NTAPI) included in `ntdll.dll`, can cause BlueScreen (BSOD, Blue Screen of Death) with certain parameters.
 
+**No need of UAC**. Works on Windows systems with Windows NT kernel, tested on Windows 7 and Windows 10. 
+
 ### NtRaiseHardError
 
 ```c++

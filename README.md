@@ -1,5 +1,7 @@
 # Trigger-BSOD
 
+**:warning: ONLY FOR COMPUTER SECURITY. DO NOT USE THIS REPO FOR ILLEGAL PURPOSES. :warning:**
+
 ## NtRaiseHardError & ZwRaiseHardError
 
 Both functions are undocumented Windows APIs (NTAPI) included in `ntdll.dll`, can cause BlueScreen (BSOD, Blue Screen of Death) with certain parameters.

@@ -85,7 +85,7 @@ typedef enum _HARDERROR_RESPONSE {
 With `MinGW64` (from MSYS2), `CMake 3.22`, `C++11`.
 
 ## VirusTotal
-| ![NtRaiseHardError](https://user-images.githubusercontent.com/12462465/170830231-0f0ff19e-c732-4d06-873c-ada1c46800aa.png) | ![ZwRaiseHardError](https://user-images.githubusercontent.com/12462465/170830234-c041acaa-2b98-490a-a421-586c444a8907.png) |
+| ![](https://github-production-user-asset-6210df.s3.amazonaws.com/12462465/253155023-aef9419c-fcd3-4a93-acf1-c2b3b9bf06dc.png) | ![](https://github-production-user-asset-6210df.s3.amazonaws.com/12462465/253155019-ddbf192f-2be6-4557-a298-20078ba7d314.png) |
 | ---- | ---- |
 
 

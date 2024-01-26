@@ -80,7 +80,9 @@ typedef enum _HARDERROR_RESPONSE {
 } HARDERROR_RESPONSE, *PHARDERROR_RESPONSE;
 ```
 
-## Build
+## RtlSetProcessIsCritical
+
+`RtlSetProcessIsCritical` is yet another undocumented function hidden in the Windows kernel. It is one of the few which do not have a kernel32 equivalent.
 
 - Previously: With `MinGW64` (from MSYS2), `CMake 3.22`, `C++11`.
 - Currently : With `Visual Studio 17 2022`, `CMake 3.27.8`, `C++11`.

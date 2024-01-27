@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSharedSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug - Visual Studio x86" ENABLED="true" GENERATION_DIR="out/CLion/Debug-x86" CONFIG_NAME="Debug" TOOLCHAIN_NAME="MinGW 32" GENERATION_OPTIONS="-T v141_xp" NO_GENERATOR="true" />
+      <configuration PROFILE_NAME="Release - Visual Studio x86" ENABLED="true" GENERATION_DIR="out/CLion/Release-x86" CONFIG_NAME="MinSizeRel" TOOLCHAIN_NAME="MinGW 32" GENERATION_OPTIONS="-T v141_xp" NO_GENERATOR="true" />
+    </configurations>
+  </component>
+</project>

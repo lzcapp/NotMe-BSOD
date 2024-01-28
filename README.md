@@ -113,7 +113,7 @@ return 0;
 ## Build
 
 - Previously: With `MinGW64` (from MSYS2), `CMake 3.22`, `C++11`.
-- Currently : With `Visual Studio 17 2022`, `CMake 3.27.8`, `C++11`.
+- Currently : With `Visual Studio 17 2022` (x86), `CMake 3.27.8`, `C++11`.
 
 ## VirusTotal
 - `NtRaiseHardError.exe`: https://www.virustotal.com/gui/file/ac6bc7eb49c62ef1fe68dd952dbb5091d590bff4215b9417cd4ff71b98a0d249

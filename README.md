@@ -6,8 +6,6 @@
 
 Both functions are undocumented `Windows APIs (NTAPI)` included in `ntdll.dll`, which can cause `BlueScreen (BSOD, Blue Screen of Death)` with certain parameters.
 
-**Does not triger the `UAC (User Account Control) prompt`**. Assumingly, it works on all Windows systems with `Windows NT kernel`, tested on `Windows 7`, `Windows 10` and `Windows 11`. 
-
 ### NtRaiseHardError
 
 ```C++
@@ -110,12 +108,20 @@ SetCriticalProcess(TRUE, NULL, FALSE);
 return 0;
 ```
 
+## Compatibility
+
+### NtRaiseHardError & ZwRaiseHardError
+
+**Does not triger the `UAC (User Account Control) prompt`**. Assumingly, works on all Windows systems with `Windows NT kernel`, tested on `Windows XP`, `Windows 7`, `Windows 10` and `Windows 11`. 
+
+### RtlSetProcessIsCritical
+
+I don't know why it doesn't work on `Windows XP`. Works well on `Windwos 7`.
+
+Needs `Administrator privilege (UAC)` on `Winodws 10` and `Windows 11`.
+
 ## Build
 
 - Previously: With `MinGW64` (from MSYS2), `CMake 3.22`, `C++11`.
-- Currently : With `Visual Studio 17 2022` (x86), `CMake 3.27.8`, `C++11`.
-
-## VirusTotal
-- `NtRaiseHardError.exe`: https://www.virustotal.com/gui/file/ac6bc7eb49c62ef1fe68dd952dbb5091d590bff4215b9417cd4ff71b98a0d249
-- `ZwRaiseHardError.exe`: https://www.virustotal.com/gui/file/4398a612f44c3c4fc3c8600dcd2fbc1aba68962c8602e01042dfc86835eec19c
+- Currently : With `Visual Studio 17 2022` (x86), `CMake 3.27.8`, `C++11`, `-T v141_xp`.
 

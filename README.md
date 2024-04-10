@@ -140,18 +140,12 @@ return 0;
 
 ## Compatibility
 
+Assumingly, works on all Windows systems with `Windows NT kernel`, tested on `Windows XP`, `Windows 7`, `Windows 10` and `Windows 11`.
+
 ### NtRaiseHardError & ZwRaiseHardError
 
-**Does not triger the `UAC (User Account Control) prompt`**. Assumingly, works on all Windows systems
-with `Windows NT kernel`, tested on `Windows XP`, `Windows 7`, `Windows 10` and `Windows 11`.
+Does not triger the `UAC (User Account Control) prompt`.
 
 ### RtlSetProcessIsCritical
 
-I don't know why it doesn't work on `Windows XP`. Works well on `Windwos 7`.
-
-Needs `Administrator privilege (UAC)` on `Winodws 10` and `Windows 11`.
-
-## Build
-
-- Previously: With `MinGW64` (from MSYS2), `CMake 3.22`, `C++11`.
-- Currently : With `Visual Studio 17 2022` (x86), `CMake 3.27.8`, `C++11`, `-T v141_xp`.
+Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winodws 10` and `Windows 11`.

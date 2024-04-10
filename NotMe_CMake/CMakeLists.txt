@@ -7,5 +7,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable(NtRaiseHardError RaiseHardError/NtRaiseHardError.cpp)
 add_executable(ZwRaiseHardError RaiseHardError/ZwRaiseHardError.cpp)
-
 add_executable(SetProcessIsCritical SetProcessIsCritical/RtlSetProcessIsCritical.cpp)

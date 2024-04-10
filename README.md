@@ -12,7 +12,7 @@ Orginal `C++` project that uses `CMake` to build.
 
 ### NotMe_VCPP
 
-`C++` project created with `Visual Studio 2020` on `Windows XP`.
+`C++` project created with `Visual Studio 2010` on `Windows XP`.
 
 ### NotMe_GUI
 

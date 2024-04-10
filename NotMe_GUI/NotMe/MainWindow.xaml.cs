@@ -5,9 +5,6 @@ using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace NotMe {
-    /// <summary>
-    /// MainWindow.xaml 的交互逻辑
-    /// </summary>
     public partial class MainWindow {
         [DllImport("ntdll.dll")]
         private static extern uint RtlAdjustPrivilege(int privilege, bool bEnablePrivilege, bool isThreadPrivilege, out bool previousValue);
@@ -46,9 +43,7 @@ namespace NotMe {
         private void BtnRtlSetProcessIsCritical_Click(object sender, RoutedEventArgs e) {
             try {
                 Process.EnterDebugMode();
-            } catch (System.ComponentModel.Win32Exception exception) {
-                MessageBox.Show(exception.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Stop);
-
+            } catch (Exception) {
                 var proc = new Process {
                     StartInfo = {
                         FileName = Assembly.GetExecutingAssembly().Location, UseShellExecute = true, Verb = "runas"
@@ -60,10 +55,6 @@ namespace NotMe {
             RtlSetProcessIsCritical(1, 0, 0);
 
             Environment.Exit(1);
-        }
-
-        private void BtnNotMyFault_Click(object sender, RoutedEventArgs e) {
-
         }
     }
 }

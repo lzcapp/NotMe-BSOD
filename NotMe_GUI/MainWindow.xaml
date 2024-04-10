@@ -1,11 +1,14 @@
-﻿<Window x:Name="Main" x:Class="NotMe.MainWindow"
+﻿<Window x:Class="NotMe.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow" Width="187" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="200">
-        <WrapPanel Orientation="Vertical" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto"
+    <Window.Background>
+        <ImageBrush ImageSource="/hazard_stripes_seamless.jpg" TileMode="None" Stretch="None"/>
+    </Window.Background>
+    <WrapPanel Orientation="Vertical" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto"
                VerticalAlignment="Center" Margin="0,10,0,10" ClipToBounds="True" SnapsToDevicePixels="True">
                 <Button x:Name="BtnNtRaiseHardError" Content="NtRaiseHardError" HorizontalAlignment="Center"
                         VerticalAlignment="Center" Padding="10,5,10,5"

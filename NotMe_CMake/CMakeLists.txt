@@ -5,6 +5,8 @@ project(Trigger-BSOD)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(NtRaiseHardError RaiseHardError/NtRaiseHardError.cpp)
-add_executable(ZwRaiseHardError RaiseHardError/ZwRaiseHardError.cpp)
-add_executable(SetProcessIsCritical SetProcessIsCritical/RtlSetProcessIsCritical.cpp)
+set(CMAKE_EXE_LINKER_FLAGS -static)
+
+add_executable(NtRaiseHardError NtRaiseHardError.cpp)
+add_executable(ZwRaiseHardError ZwRaiseHardError.cpp)
+add_executable(SetProcessIsCritical RtlSetProcessIsCritical.cpp)

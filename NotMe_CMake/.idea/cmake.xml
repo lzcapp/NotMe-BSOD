@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeSharedSettings">
     <configurations>
-      <configuration PROFILE_NAME="Release - Visual Studio x86" ENABLED="true" GENERATION_DIR="out/CLion/Release-x86" CONFIG_NAME="MinSizeRel" TOOLCHAIN_NAME="Visual Studio x86" GENERATION_OPTIONS="-G &quot;Visual Studio 17 2022&quot; -T v141_xp" />
+      <configuration PROFILE_NAME="Release" ENABLED="true" GENERATION_DIR="out/MinGW32" CONFIG_NAME="Release" TOOLCHAIN_NAME="MinGW32" />
     </configurations>
   </component>
 </project>

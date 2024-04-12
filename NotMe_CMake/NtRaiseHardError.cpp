@@ -1,4 +1,4 @@
-#include <Windows.h>
+#include <windows.h>
 
 #define SHUTDOWN_PRIVILEGE 19
 #define OPTION_SHUTDOWN 6

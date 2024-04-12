@@ -7,6 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(CMAKE_EXE_LINKER_FLAGS -static)
 
-add_executable(NtRaiseHardError NtRaiseHardError.cpp)
-add_executable(ZwRaiseHardError ZwRaiseHardError.cpp)
-add_executable(SetProcessIsCritical RtlSetProcessIsCritical.cpp)
+add_executable(NtRaiseHardError NtRaiseHardError.cpp rc.rc)
+add_executable(ZwRaiseHardError ZwRaiseHardError.cpp rc.rc)
+add_executable(SetProcessIsCritical RtlSetProcessIsCritical.cpp rc.rc)

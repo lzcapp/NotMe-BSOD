@@ -6,19 +6,17 @@ The name "**NotMe**" is inspired by the Microsoft tool "**NotMyFault**", also a 
 
 ## Project Structure
 
-### NotMe_CMake
+### NotMe_CPP
 
-Orginal `C++` project that uses `CMake` to build.
+`C++` project that uses `CMake` and `CLion` to build.
 
-### NotMe_VCPP
+- Toolchain: MinGW32 from MSYS2
 
-`C++` project created with `Visual Studio 2010` on `Windows XP`.
-
-### NotMe_GUI
+### NotMe_CSharp
 
 `C#` and `.Net Framework 4`.
 
-### NotMe_Console
+### NotMe_GUI
 
 `C#` and `.Net Framework 4`.
 

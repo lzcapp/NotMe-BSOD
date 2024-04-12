@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeSharedSettings">
     <configurations>
-      <configuration PROFILE_NAME="Release" ENABLED="true" GENERATION_DIR="out/MinGW32" CONFIG_NAME="Release" TOOLCHAIN_NAME="MinGW32" />
+      <configuration PROFILE_NAME="Release" ENABLED="true" GENERATION_DIR="out" CONFIG_NAME="Release" TOOLCHAIN_NAME="MinGW32" />
     </configurations>
   </component>
 </project>

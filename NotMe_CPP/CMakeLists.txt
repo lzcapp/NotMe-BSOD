@@ -9,4 +9,7 @@ set(CMAKE_EXE_LINKER_FLAGS -static)
 
 add_executable(NtRaiseHardError NtRaiseHardError.cpp rc.rc)
 add_executable(ZwRaiseHardError ZwRaiseHardError.cpp rc.rc)
-add_executable(SetProcessIsCritical RtlSetProcessIsCritical.cpp rc.rc)
+
+add_executable(CloseWindowStation CloseWindowStation.cpp rc.rc)
+
+add_executable(SetProcessIsCritical SetProcessIsCritical.cpp rc.rc)

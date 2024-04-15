@@ -22,10 +22,10 @@ The name "**NotMe**" is inspired by the Microsoft tool "**NotMyFault**", also a 
 
 ## NtRaiseHardError & ZwRaiseHardError
 
+> Ref: <http://undocumented.ntinternals.net/index.html?page=UserMode%2FUndocumented%20Functions%2FError%2FNtSetDefaultHardErrorPort.html>
+
 Both functions are undocumented `Windows APIs (NTAPI)` included in `ntdll.dll`, which can
 cause `BlueScreen (BSOD, Blue Screen of Death)` with certain parameters.
-
-### NtRaiseHardError
 
 ```C++
 NtRaiseHardError(
@@ -38,8 +38,6 @@ NtRaiseHardError(
 );
 ```
 
-### ZwRaiseHardError
-
 ```C++
 ZwRaiseHardError(
   IN  NTSTATUS                  ErrorStatus,
@@ -50,6 +48,13 @@ ZwRaiseHardError(
   OUT PHARDERROR_RESPONSE       Response
 );
 ```
+
+- `ErrorStatus`   Error code.
+- `NumberOfParameters`   Number of optional parameters in Parameters array.
+- `UnicodeStringParameterMask`   Optional string parameter (can be only one per error code).
+- `*Parameters` Array of **DWORD** parameters for use in error message string.
+- `ResponseOption` See `HARDERROR_RESPONSE_OPTION` for possible values description.
+- `Response` Pointer to `HARDERROR_RESPONSE` enumeration.
 
 ### Parameters
 
@@ -99,6 +104,8 @@ typedef enum _HARDERROR_RESPONSE {
 
 ## RtlSetProcessIsCritical
 
+> Ref: <http://www.netcore2k.net/projects/freeram>
+
 `RtlSetProcessIsCritical` is yet another undocumented function hidden in the Windows kernel. It is one of the few which
 do not have a kernel32 equivalent.
 
@@ -108,11 +115,12 @@ system critical process ends/terminates, the stop code is CRITICAL_PROCESS_DIED 
 CRITICAL_OBJECT_TERMINATION (0xF4) if the process was abnormally terminated.
 
 ```C++
-NTSTATUS RtlSetProcessIsCritical (
-    BOOLEAN bNew,     // new setting for process
-    BOOLEAN *pbOld,     // pointer which receives old setting (can be null)
-    BOOLEAN bNeedScb    // need system critical breaks
-);
+/**
+ * @param NewValue the new critical setting: 1 for a critical process, 0 for a normal process
+ * @param OldValue if not null, will receive the old setting for the process
+ * @param bNeedScb specifics whether system critical breaks will be required (and already enabled) for the process
+ */
+NTSTATUS RtlSetProcessIsCritical (IN BOOLEAN bNew, OUT BOOLEAN *pbOld, IN BOOLEAN bNeedScb);
 ```
 
 This means that calling `RtlSetProcessIsCritical(TRUE, NULL, FALSE)` would make a process critical, while another call
@@ -120,20 +128,21 @@ to `RtlSetProcessIsCritical(FALSE, NULL, FALSE)` would return the process to nor
 termination or ending of the process in any way will usually cause either a BSOD (if BSOD-ing is enabled), or will cause
 the system to reboot itself.
 
-### Usage
-
-The use of this function requires the `SE_DEBUG_NAME` privilege in the calling process. This can easily be obtained
-using `AdjustTokenPrivileges`.
-
-First obtain the privilege, then set the process itself to be critical. Simply ending the process by `return 0;` will
-cause the BSOD.
+### CloseWindowStation
 
 ```C++
-AdjustPrivilege(20UL, TRUE, FALSE, &b);
+HWINSTA CreateWindowStationA(
+  [in, optional] LPCSTR                lpwinsta,
+                 DWORD                 dwFlags,
+  [in]           ACCESS_MASK           dwDesiredAccess,
+  [in, optional] LPSECURITY_ATTRIBUTES lpsa
+);
+```
 
-SetCriticalProcess(TRUE, NULL, FALSE);
-
-return 0;
+```C++
+BOOL CloseWindowStation(
+  [in] HWINSTA hWinSta
+);
 ```
 
 ## Compatibility
@@ -152,11 +161,11 @@ Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winod
 
 ### Compatibility Table
 
-|                         | ReactOS 0.4.14     | Windows 2000       | Windows XP         | Windows Vista      | Windows 7          | Windows 10         | Windows 11         |
-| ----------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| NtRaiseHardError        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| ZwRaiseHardError        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| RtlSetProcessIsCritical | :heavy_check_mark: | :x:                | :heavy_check_mark: | :o:                | :o:                | :o:                | :o:                |
+|                                     | ReactOS 0.4.14     | Windows 2000       | Windows XP         | Windows Vista      | Windows 7          | Windows 10         | Windows 11         |
+| ----------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| NtRaiseHardError / ZwRaiseHardError | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| RtlSetProcessIsCritical             | :heavy_check_mark: | :x:                | :heavy_check_mark: | :o:                | :o:                | :o:                | :o:                |
+| CloseWindowStation                  | :x:                | :x:                | :heavy_check_mark: | :x:                | :x:                | :x:                | :x:                |
 
 > :x:: Not Working
 > :o:: Needs `Administrator privilege`

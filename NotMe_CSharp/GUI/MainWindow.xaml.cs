@@ -3,14 +3,12 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
+using NtRaiseHardError;
 
 namespace NotMe {
     public partial class MainWindow {
         [DllImport("ntdll.dll")]
         private static extern uint RtlAdjustPrivilege(int privilege, bool bEnablePrivilege, bool isThreadPrivilege, out bool previousValue);
-
-        [DllImport("ntdll.dll")]
-        private static extern uint NtRaiseHardError(uint errorStatus, uint numberOfParameters, uint unicodeStringParameterMask, IntPtr parameters, uint validResponseOption, out uint response);
 
         [DllImport("ntdll.dll")]
         private static extern uint ZwRaiseHardError(uint errorStatus, uint numberOfParameters, uint unicodeStringParameterMask, IntPtr parameters, uint validResponseOption, out uint response);
@@ -29,9 +27,7 @@ namespace NotMe {
         }
 
         private void BtnNtRaiseHardError_Click(object sender, RoutedEventArgs e) {
-            _ = RtlAdjustPrivilege(Privilege, true, false, out _);
-
-            NtRaiseHardError(ErrorStatus, 0, 0, IntPtr.Zero, ValidResponseOption, out _);
+            ZwRaiseHardError
         }
 
         private void BtnZwRaiseHardError_Click(object sender, RoutedEventArgs e) {

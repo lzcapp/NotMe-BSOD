@@ -102,5 +102,19 @@
   <ItemGroup>
     <Resource Include="icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NtRaiseHardError\NtRaiseHardError.csproj">
+      <Project>{65340c14-3429-4bca-8b10-d4b6cb708da2}</Project>
+      <Name>NtRaiseHardError</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RtlSetProcessIsCritical\RtlSetProcessIsCritical.csproj">
+      <Project>{3929947f-7c8b-44aa-b103-e3211cbb934e}</Project>
+      <Name>RtlSetProcessIsCritical</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZwRaiseHardError\ZwRaiseHardError.csproj">
+      <Project>{253c96c1-80c6-4f8a-8123-dce0b983e44d}</Project>
+      <Name>ZwRaiseHardError</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

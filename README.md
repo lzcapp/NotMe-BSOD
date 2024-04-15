@@ -146,4 +146,18 @@ Does not triger the `UAC (User Account Control) prompt`.
 
 ### RtlSetProcessIsCritical
 
+Require `ntdll.dll` versions 5.1 (`Windows XP`) and higher.
+
 Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winodws 10` and `Windows 11`.
+
+### Compatibility Table
+
+|                         | ReactOS 0.4.14     | Windows 2000       | Windows XP         | Windows Vista      | Windows 7          | Windows 10         | Windows 11         |
+| ----------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| NtRaiseHardError        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| ZwRaiseHardError        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| RtlSetProcessIsCritical | :heavy_check_mark: | :x:                | :heavy_check_mark: | :o:                | :o:                | :o:                | :o:                |
+
+> :x:: Not Working
+> :o:: Needs `Administrator privilege`
+> :heavy_check_mark:: Works well

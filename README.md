@@ -14,11 +14,7 @@ The name "**NotMe**" is inspired by the Microsoft tool "**NotMyFault**", also a 
 
 ### NotMe_CSharp
 
-`C#` and `.Net Framework 4`.
-
-### NotMe_GUI
-
-`C#` and `.Net Framework 4`.
+`C#` and `.Net Framework 4`. Including a GUI app.
 
 ## NtRaiseHardError & ZwRaiseHardError
 
@@ -147,11 +143,9 @@ BOOL CloseWindowStation(
 
 ## Compatibility
 
-Assumingly, works on all Windows systems with `Windows NT kernel`, tested on `Windows XP`, `Windows 7`, `Windows 10` and `Windows 11`.
-
 ### NtRaiseHardError & ZwRaiseHardError
 
-Does not triger the `UAC (User Account Control) prompt`.
+Assumingly, works on all Windows systems with `Windows NT kernel` (`ntdll.dll`). Does not triger the `UAC (User Account Control) prompt`.
 
 ### RtlSetProcessIsCritical
 
@@ -167,6 +161,6 @@ Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winod
 | RtlSetProcessIsCritical             | :heavy_check_mark: | :x:                | :heavy_check_mark: | :o:                | :o:                | :o:                | :o:                |
 | CloseWindowStation                  | :x:                | :x:                | :heavy_check_mark: | :x:                | :x:                | :x:                | :x:                |
 
-> :x:: Not Working
-> :o:: Needs `Administrator privilege`
 > :heavy_check_mark:: Works well
+> :o:: Needs `Administrator privilege`
+> :x:: Not Working

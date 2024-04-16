@@ -27,20 +27,22 @@ BOOL AdjustProcessTokenPrivilege(LPCSTR lpszPriv) {
 int main() {
     // Enable the SE_DEBUG_NAME privilege
     if (AdjustProcessTokenPrivilege((LPCSTR) SE_DEBUG_NAME) != TRUE) {
-        return 0;
+        return -1;
     }
 
-    auto ntdll = LoadLibraryA("ntdll.dll");
-    if (ntdll == nullptr) {
-        return 0;
+    auto hNtdll = LoadLibraryA("ntdll.dll");
+    if (hNtdll == nullptr) {
+        FreeLibrary(hNtdll);
+        return -1;
     }
 
     // Declare the function and obtain it using GetProcAddress
-    RtlSetProcessIsCritical SetCriticalProcess;
-    SetCriticalProcess = (RtlSetProcessIsCritical) GetProcAddress(ntdll, "RtlSetProcessIsCritical");
+    auto SetCriticalProcess = (RtlSetProcessIsCritical) GetProcAddress(hNtdll, "RtlSetProcessIsCritical");
     if (!SetCriticalProcess) {
-        return 0;
+        FreeLibrary(hNtdll);
+        return -1;
     }
+    FreeLibrary(hNtdll);
     SetCriticalProcess(TRUE, nullptr, FALSE);
 
     // Now the process is critical, simply end it

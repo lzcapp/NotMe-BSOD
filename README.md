@@ -98,7 +98,7 @@ typedef enum _HARDERROR_RESPONSE {
 } HARDERROR_RESPONSE, *PHARDERROR_RESPONSE;
 ```
 
-## RtlSetProcessIsCritical
+## SetProcessIsCritical
 
 > Ref: <http://www.netcore2k.net/projects/freeram>
 
@@ -153,7 +153,7 @@ cmd /c start /min ntsd -c q -pn winlogon.exe 1>nul 2>nul
 
 Assumingly, works on all Windows systems with `Windows NT kernel` (`ntdll.dll`). Does not triger the `UAC (User Account Control) prompt`.
 
-### RtlSetProcessIsCritical
+### SetProcessIsCritical
 
 Require `ntdll.dll` versions 5.1 (`Windows XP`) and higher.
 
@@ -164,7 +164,7 @@ Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winod
 |                                     | ReactOS 0.4.14     | Windows 2000       | Windows XP         | Windows Vista      | Windows 7          | Windows 10         | Windows 11         |
 | ----------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | NtRaiseHardError / ZwRaiseHardError | :x:                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| RtlSetProcessIsCritical             | :heavy_check_mark: | :x:                | :heavy_check_mark: | :o:                | :o:                | :o:                | :o:                |
+| SetProcessIsCritical                | :heavy_check_mark: | :x:                | :heavy_check_mark: | :o:                | :o:                | :o:                | :o:                |
 | CloseWindowStation                  | :x:                | :x:                | :heavy_check_mark: | :x:                | :x:                | :x:                | :x:                |
 | NTSD_Winlogon                       | :x:                | :x:                | :heavy_check_mark: | :x:                | :x:                | :x:                | :x:                |
 

@@ -103,13 +103,17 @@
     <Resource Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CloseWindowStation\CloseWindowStation.csproj">
+      <Project>{ce7207fa-118a-4576-9a41-b64da63eb332}</Project>
+      <Name>CloseWindowStation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NtRaiseHardError\NtRaiseHardError.csproj">
       <Project>{65340c14-3429-4bca-8b10-d4b6cb708da2}</Project>
       <Name>NtRaiseHardError</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RtlSetProcessIsCritical\RtlSetProcessIsCritical.csproj">
+    <ProjectReference Include="..\SetProcessIsCritical\SetProcessIsCritical.csproj">
       <Project>{3929947f-7c8b-44aa-b103-e3211cbb934e}</Project>
-      <Name>RtlSetProcessIsCritical</Name>
+      <Name>SetProcessIsCritical</Name>
     </ProjectReference>
     <ProjectReference Include="..\ZwRaiseHardError\ZwRaiseHardError.csproj">
       <Project>{253c96c1-80c6-4f8a-8123-dce0b983e44d}</Project>

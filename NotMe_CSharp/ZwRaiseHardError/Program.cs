@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 namespace ZwRaiseHardError {
-    internal abstract class Program {
+    public abstract class Program {
         [DllImport("ntdll.dll")]
         private static extern uint RtlAdjustPrivilege(int privilege, bool bEnablePrivilege, bool isThreadPrivilege, out bool previousValue);
 
@@ -16,6 +16,10 @@ namespace ZwRaiseHardError {
         private const uint ValidResponseOption = 6;
 
         private static void Main() {
+            ZwRaiseHardError();
+        }
+
+        public static void ZwRaiseHardError() {
             _ = RtlAdjustPrivilege(Privilege, true, false, out _);
 
             ZwRaiseHardError(ErrorStatus, 0, 0, IntPtr.Zero, ValidResponseOption, out _);

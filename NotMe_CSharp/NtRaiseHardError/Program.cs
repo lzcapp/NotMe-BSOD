@@ -2,12 +2,12 @@
 using System.Runtime.InteropServices;
 
 namespace NtRaiseHardError {
-    internal abstract class Program {
+    public abstract class Program {
         [DllImport("ntdll.dll")]
-        public static extern uint RtlAdjustPrivilege(int privilege, bool bEnablePrivilege, bool isThreadPrivilege, out bool previousValue);
+        private static extern uint RtlAdjustPrivilege(int privilege, bool bEnablePrivilege, bool isThreadPrivilege, out bool previousValue);
 
         [DllImport("ntdll.dll")]
-        public static extern uint NtRaiseHardError(uint errorStatus, uint numberOfParameters, uint unicodeStringParameterMask, IntPtr parameters, uint validResponseOption, out uint response);
+        private static extern uint NtRaiseHardError(uint errorStatus, uint numberOfParameters, uint unicodeStringParameterMask, IntPtr parameters, uint validResponseOption, out uint response);
 
         private const int Privilege = 19;
 
@@ -16,12 +16,13 @@ namespace NtRaiseHardError {
         private const uint ValidResponseOption = 6;
 
         private static void Main() {
-            _ = RtlAdjustPrivilege(Privilege, true, false, out _);
-
-            NtRaiseHardError(ErrorStatus, 0, 0, IntPtr.Zero, ValidResponseOption, out _);
+            NtRaiseHardError();
         }
 
         public static void NtRaiseHardError() {
+            _ = RtlAdjustPrivilege(Privilege, true, false, out _);
+
+            NtRaiseHardError(ErrorStatus, 0, 0, IntPtr.Zero, ValidResponseOption, out _);
         }
     }
 }

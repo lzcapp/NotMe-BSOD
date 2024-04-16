@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3929947F-7C8B-44AA-B103-E3211CBB934E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>RtlSetProcessIsCritical</RootNamespace>
-    <AssemblyName>RtlSetProcessIsCritical</AssemblyName>
+    <RootNamespace>SetProcessIsCritical</RootNamespace>
+    <AssemblyName>SetProcessIsCritical</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>RtlSetProcessIsCritical.Program</StartupObject>
+    <StartupObject>SetProcessIsCritical.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>

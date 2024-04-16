@@ -115,6 +115,10 @@
       <Project>{067eb2ed-57f8-4a9c-860e-a563a8a13211}</Project>
       <Name>NTSD_Winlogon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PowerShell_Wininit\PowerShell_Wininit.csproj">
+      <Project>{05a3813e-0e43-46d1-bcae-1edd9c67836f}</Project>
+      <Name>PowerShell_Wininit</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SetProcessIsCritical\SetProcessIsCritical.csproj">
       <Project>{3929947f-7c8b-44aa-b103-e3211cbb934e}</Project>
       <Name>SetProcessIsCritical</Name>

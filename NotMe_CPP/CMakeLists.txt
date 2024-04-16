@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(CMAKE_EXE_LINKER_FLAGS -static)
 
+add_executable(PowerShell_Wininit PowerShell_Wininit.cpp rc.rc)
+
 add_executable(NTSD_Winlogon NTSD_Winlogon.cpp rc.rc)
 
 add_executable(NtRaiseHardError NtRaiseHardError.cpp rc.rc)

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Width="250" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="340">
+        Title="MainWindow" Width="250" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="400">
     <Window.Background>
         <ImageBrush ImageSource="/hazard_stripes_seamless.jpg" TileMode="None" Stretch="None"/>
     </Window.Background>
@@ -21,6 +21,8 @@
         <Button x:Name="BtnCloseWindowStation" Content="CloseWindowStation (XP)" HorizontalAlignment="Center"
                 VerticalAlignment="Top" Cursor="Hand"  Width="200" Height="30" FontFamily="Tahoma" FontSize="14" Margin="0,15,0,15" FontWeight="Bold" Click="BtnCloseWindowStation_Click" />
         <Button x:Name="BtnNTSDWinlogon" Content="NTSD__Winlogon (XP)" HorizontalAlignment="Center"
-                VerticalAlignment="Top" Cursor="Hand"  Width="200" Height="30" FontFamily="Tahoma" FontSize="14" Margin="0,15,0,0" FontWeight="Bold" Click="BtnNTSDWinlogon_Click" />
+                VerticalAlignment="Top" Cursor="Hand"  Width="200" Height="30" FontFamily="Tahoma" FontSize="14" Margin="0,15,0,15" FontWeight="Bold" Click="BtnNTSDWinlogon_Click" />
+        <Button x:Name="BtnPowerShellWininit" Content="PowerShell__Wininit (7)" HorizontalAlignment="Center"
+                VerticalAlignment="Top" Cursor="Hand"  Width="200" Height="30" FontFamily="Tahoma" FontSize="14" Margin="0,15,0,0" FontWeight="Bold" Click="BtnPowerShellWininit_Click" />
     </WrapPanel>
 </Window>

@@ -25,5 +25,9 @@ namespace NotMe {
         private void BtnNTSDWinlogon_Click(object sender, RoutedEventArgs e) {
             NTSD_Winlogon.Program.NTSD_Winlogo();
         }
+
+        private void BtnPowerShellWininit_Click(object sender, RoutedEventArgs e) {
+            PowerShell_Wininit.Program.PowerShell_Wininit();
+        }
     }
 }

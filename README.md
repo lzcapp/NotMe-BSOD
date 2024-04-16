@@ -124,7 +124,7 @@ to `RtlSetProcessIsCritical(FALSE, NULL, FALSE)` would return the process to nor
 termination or ending of the process in any way will usually cause either a BSOD (if BSOD-ing is enabled), or will cause
 the system to reboot itself.
 
-### CloseWindowStation
+## CloseWindowStation
 
 ```C++
 HWINSTA CreateWindowStationA(
@@ -139,6 +139,12 @@ HWINSTA CreateWindowStationA(
 BOOL CloseWindowStation(
   [in] HWINSTA hWinSta
 );
+```
+
+## NTSD_Winlogon
+
+```shell
+cmd /c start /min ntsd -c q -pn winlogon.exe 1>nul 2>nul
 ```
 
 ## Compatibility
@@ -157,9 +163,10 @@ Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winod
 
 |                                     | ReactOS 0.4.14     | Windows 2000       | Windows XP         | Windows Vista      | Windows 7          | Windows 10         | Windows 11         |
 | ----------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| NtRaiseHardError / ZwRaiseHardError | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| NtRaiseHardError / ZwRaiseHardError | :x:                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | RtlSetProcessIsCritical             | :heavy_check_mark: | :x:                | :heavy_check_mark: | :o:                | :o:                | :o:                | :o:                |
 | CloseWindowStation                  | :x:                | :x:                | :heavy_check_mark: | :x:                | :x:                | :x:                | :x:                |
+| NTSD_Winlogon                       | :x:                | :x:                | :heavy_check_mark: | :x:                | :x:                | :x:                | :x:                |
 
 > :heavy_check_mark:: Works well
 > :o:: Needs `Administrator privilege`

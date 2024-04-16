@@ -21,5 +21,9 @@ namespace NotMe {
         private void BtnCloseWindowStation_Click(object sender, RoutedEventArgs e) {
             CloseWindowStation.Program.CloseWindowStation();
         }
+
+        private void BtnNTSDWinlogon_Click(object sender, RoutedEventArgs e) {
+            NTSD_Winlogon.Program.NTSD_Winlogo();
+        }
     }
 }

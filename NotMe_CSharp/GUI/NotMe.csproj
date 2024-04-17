@@ -123,6 +123,10 @@
       <Project>{3929947f-7c8b-44aa-b103-e3211cbb934e}</Project>
       <Name>SetProcessIsCritical</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TaskKill_Wininit\TaskKill_Wininit.csproj">
+      <Project>{fd7e0d8a-5f2d-44b3-b254-bb64d6bb4c82}</Project>
+      <Name>TaskKill_Wininit</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZwRaiseHardError\ZwRaiseHardError.csproj">
       <Project>{253c96c1-80c6-4f8a-8123-dce0b983e44d}</Project>
       <Name>ZwRaiseHardError</Name>

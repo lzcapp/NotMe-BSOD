@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace SetProcessIsCritical {
     public abstract class Program {
-        [DllImport("ntdll.dll", SetLastError = true)]
+        [DllImport("ntdll.dll")]
         private static extern void RtlSetProcessIsCritical(uint newValue, uint oldValue, uint checkFlag);
 
         private static void Main() {
@@ -16,12 +16,18 @@ namespace SetProcessIsCritical {
             try {
                 Process.EnterDebugMode();
             } catch (Exception) {
-                var proc = new Process {
+                var process = new Process {
                     StartInfo = {
-                        FileName = Assembly.GetExecutingAssembly().Location, UseShellExecute = true, Verb = "runas"
+                        FileName = Assembly.GetExecutingAssembly().Location,
+                        UseShellExecute = true,
+                        Verb = "runas"
                     }
                 };
-                proc.Start();
+                try {
+                    process.Start();
+                } catch (Exception) {
+                    return;
+                }
             }
 
             RtlSetProcessIsCritical(1, 0, 0);

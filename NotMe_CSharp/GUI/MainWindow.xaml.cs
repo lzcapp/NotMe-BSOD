@@ -29,5 +29,9 @@ namespace NotMe {
         private void BtnPowerShellWininit_Click(object sender, RoutedEventArgs e) {
             PowerShell_Wininit.Program.PowerShell_Wininit();
         }
+
+        private void BtnTaskKillWininit_Click(object sender, RoutedEventArgs e) {
+            TaskKill_Wininit.Program.TaskKill_Wininit();
+        }
     }
 }

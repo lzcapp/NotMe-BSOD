@@ -20,9 +20,13 @@ namespace NtRaiseHardError {
         }
 
         public static void NtRaiseHardError() {
-            _ = RtlAdjustPrivilege(Privilege, true, false, out _);
+            try {
+                _ = RtlAdjustPrivilege(Privilege, true, false, out _);
 
-            NtRaiseHardError(ErrorStatus, 0, 0, IntPtr.Zero, ValidResponseOption, out _);
+                NtRaiseHardError(ErrorStatus, 0, 0, IntPtr.Zero, ValidResponseOption, out _);
+            } catch (Exception) {
+                // ignored
+            }
         }
     }
 }

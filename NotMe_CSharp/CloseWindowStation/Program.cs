@@ -23,10 +23,14 @@ namespace CloseWindowStation {
         }
 
         public static void CloseWindowStation() {
-            const uint dwDesiredAccess = (uint)(GENERIC_READ | GENERIC_WRITE);
-            IntPtr hWinSta = CreateWindowStation("WindowStation", 0, dwDesiredAccess, IntPtr.Zero);
-            SetHandleInformation(hWinSta, HANDLE_FLAG_PROTECT_FROM_CLOSE, HANDLE_FLAG_PROTECT_FROM_CLOSE);
-            CloseWindowStation(hWinSta);
+            try {
+                const uint dwDesiredAccess = (uint)(GENERIC_READ | GENERIC_WRITE);
+                IntPtr hWinSta = CreateWindowStation("WindowStation", 0, dwDesiredAccess, IntPtr.Zero);
+                SetHandleInformation(hWinSta, HANDLE_FLAG_PROTECT_FROM_CLOSE, HANDLE_FLAG_PROTECT_FROM_CLOSE);
+                CloseWindowStation(hWinSta);
+            } catch (Exception) {
+                // ignored
+            }
         }
     }
 }

@@ -11,20 +11,18 @@ add_executable(AllinOne AllinOne.cpp rc.rc)
 
 add_executable(NTSD_Winlogon NTSD_Winlogon.cpp rc.rc)
 
-add_executable(PowerShell_Wininit PowerShell_Wininit.cpp rc.rc)
+add_executable(TaskKill_Wininit TaskKill_Wininit.cpp rc.rc)
 
 add_executable(NtRaiseHardError NtRaiseHardError.cpp rc.rc)
 add_executable(ZwRaiseHardError ZwRaiseHardError.cpp rc.rc)
+
+add_executable(PowerShell_Wininit PowerShell_Wininit.cpp rc.rc)
 
 add_executable(CloseWindowStation CloseWindowStation.cpp rc.rc)
 
 add_executable(SetProcessIsCritical SetProcessIsCritical.cpp rc.rc)
 
 add_custom_command(TARGET SetProcessIsCritical POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/.cmake
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/CMakeFiles
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/CMakeScripts
-    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/Testing
     COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_BINARY_DIR}/CMakeCache.txt
     COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_BINARY_DIR}/cmake_install.cmake
     COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_BINARY_DIR}/Makefile
@@ -33,4 +31,8 @@ add_custom_command(TARGET SetProcessIsCritical POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_BINARY_DIR}/CTestCustom.cmake
     COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_BINARY_DIR}/cmake_install.cmake
     COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_BINARY_DIR}/Trigger-BSOD.cbp
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/.cmake
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/CMakeFiles
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/CMakeScripts
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/Testing
 )

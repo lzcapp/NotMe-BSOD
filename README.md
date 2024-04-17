@@ -167,8 +167,9 @@ Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winod
 | SetProcessIsCritical                | :heavy_check_mark: | :x:                | :heavy_check_mark: | :o:                | :o:                | :o:                | :o:                |
 | CloseWindowStation                  | :x:                | :x:                | :heavy_check_mark: | :x:                | :x:                | :x:                | :x:                |
 | NTSD_Winlogon                       | :x:                | :heavy_check_mark: | :heavy_check_mark: | :x:                | :x:                | :x:                | :x:                |
-| PowerShell_Wininit                  | :x:                | :x:                | :x:                | :x:                | :heavy_check_mark: | :x:                | :x:                |
+| PowerShell_Wininit                  | :x:                | :x:                | :x:                | :x:                | :o:                | :x:                | :x:                |
+| TaskKill_Wininit                    | :x:                | :x:                | :x:                | :o:                | :o:                | :x:                | :x:                |
 
 > :heavy_check_mark:: Works well
-> :o:: Needs `Administrator privilege`
+> :o:: Needs `Administrator privilege` / `UAC (User Account Control)`
 > :x:: Not Working

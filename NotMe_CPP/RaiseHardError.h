@@ -34,26 +34,26 @@ typedef enum _HARDERROR_RESPONSE {
 typedef NTSTATUS(NTAPI *pdef_RtlAdjustPrivilege)(
         ULONG       Privilege,
         BOOLEAN     Enable,
-        BOOLEAN     CurrentThread,
-        PBOOLEAN    Enabled
+        BOOLEAN     Client,
+        PBOOLEAN    WasEnabled
 );
 
 typedef NTSTATUS(NTAPI *pdef_NtRaiseHardError)(
-        NTSTATUS                    ErrorStatus,
-        ULONG                       NumberOfParameters,
-        PUNICODE_STRING             UnicodeStringParameterMask OPTIONAL,
-        PULONG_PTR                  Parameters,
-        HARDERROR_RESPONSE_OPTION   ResponseOption,
-        PHARDERROR_RESPONSE         Response
+        IN      NTSTATUS                    ErrorStatus,
+        IN      ULONG                       NumberOfParameters,
+        IN      PUNICODE_STRING             UnicodeStringParameterMask,
+        IN      PULONG_PTR                  Parameters,
+        IN      HARDERROR_RESPONSE_OPTION   ValidResponseOptions,
+        OUT     PHARDERROR_RESPONSE         Response
 );
 
 typedef NTSTATUS(NTAPI *pdef_ZwRaiseHardError)(
-        NTSTATUS                    ErrorStatus,
-        ULONG                       NumberOfParameters,
-        PUNICODE_STRING             UnicodeStringParameterMask OPTIONAL,
-        PULONG_PTR                  Parameters,
-        HARDERROR_RESPONSE_OPTION   ResponseOption,
-        PHARDERROR_RESPONSE         Response
+        IN      NTSTATUS                    ErrorStatus,
+        IN      ULONG                       NumberOfParameters,
+        IN      PUNICODE_STRING             UnicodeStringParameterMask,
+        IN      PULONG_PTR                  Parameters,
+        IN      HARDERROR_RESPONSE_OPTION   ValidResponseOptions,
+        OUT     PHARDERROR_RESPONSE         Response
 );
 
 #endif //TRIGGER_BSOD_RAISEHARDERROR_H

@@ -163,7 +163,7 @@ taskkill /f /im wininit.exe
 
 ### NtRaiseHardError & ZwRaiseHardError
 
-Assumingly, works on all Windows systems with `Windows NT kernel` (`ntdll.dll`). Does not triger the `UAC (User Account Control) prompt`.
+Works on all Windows systems with `Windows NT kernel` (`ntdll.dll`). Does not triger the `UAC (User Account Control)` prompt.
 
 ### SetProcessIsCritical
 

@@ -147,6 +147,18 @@ BOOL CloseWindowStation(
 cmd /c start /min ntsd -c q -pn winlogon.exe 1>nul 2>nul
 ```
 
+## PowerShell_Wininit
+
+```shell
+powershell wininit
+```
+
+## TaskKill_Wininit
+
+```shell
+taskkill /f /im wininit.exe
+```
+
 ## Compatibility
 
 ### NtRaiseHardError & ZwRaiseHardError

@@ -183,5 +183,5 @@ Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winod
 | TaskKill_Wininit                    | :x:                | :x:                | :x:                | :o:                | :o:                | :x:                | :x:                |
 
 > :heavy_check_mark:: Works well
-> :o:: Needs `Administrator privilege` / `UAC (User Account Control)`
+> :o:: Needs `Administrator Privilege` / `UAC (User Account Control)`
 > :x:: Not Working

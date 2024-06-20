@@ -185,3 +185,13 @@ Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winod
 > :heavy_check_mark:: Works well
 > :o:: Needs `Administrator Privilege` / `UAC (User Account Control)`
 > :x:: Not Working
+
+## Star History
+
+<a href="https://star-history.com/#lzcapp/NotMe-BSOD&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=lzcapp/NotMe-BSOD&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=lzcapp/NotMe-BSOD&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=lzcapp/NotMe-BSOD&type=Date" />
+ </picture>
+</a>

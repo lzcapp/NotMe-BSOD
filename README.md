@@ -2,7 +2,7 @@
 
 **:warning: SOLELY FOR SECURITY RESEARCH PURPOSES. DO NOT USE THIS REPO FOR ILLEGAL PURPOSES. :warning:**
 
-The name "**NotMe**" is inspired by the Microsoft tool "**NotMyFault**", also a tool that can cause BSOD (Blue Screen of Death) on Windows system.
+The name "**NotMe**" is inspired by the Microsoft tool "**NotMyFault**", also a tool that can be used to cause BSOD (Blue Screen of Death) on Windows system.
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/lzcapp/NotMe-BSOD/cmake-single-platform.yml?style=for-the-badge) &ensp; ![GitHub Release](https://img.shields.io/github/v/release/lzcapp/NotMe-BSOD?style=for-the-badge)
 
@@ -185,7 +185,9 @@ Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winod
 | TaskKill_Wininit                    | :x:                | :x:                | :x:                | :o:                | :o:                | :x:                | :x:                |
 
 > :heavy_check_mark:: Works well
+> 
 > :o:: Needs `Administrator Privilege` / `UAC (User Account Control)`
+> 
 > :x:: Not Working
 
 ## Star History

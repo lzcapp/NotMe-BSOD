@@ -4,6 +4,8 @@
 
 The name "**NotMe**" is inspired by the Microsoft tool "**NotMyFault**", also a tool that can cause BSOD (Blue Screen of Death) on Windows system.
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/lzcapp/NotMe-BSOD/cmake-single-platform.yml?style=for-the-badge) &ensp; ![GitHub Release](https://img.shields.io/github/v/release/lzcapp/NotMe-BSOD?style=for-the-badge)
+
 ## Project Structure
 
 ### NotMe_CPP

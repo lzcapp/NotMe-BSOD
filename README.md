@@ -184,9 +184,9 @@ Needs `Administrator privilege` / trigers `UAC (User Account Control)` on `Winod
 | PowerShell_Wininit                  | :x:                | :x:                | :x:                | :x:                | :o:                | :x:                | :x:                |
 | TaskKill_Wininit                    | :x:                | :x:                | :x:                | :o:                | :o:                | :x:                | :x:                |
 
-> :heavy_check_mark:: Works well
+> :heavy_check_mark:: Works Well
 > 
-> :o:: Needs `Administrator Privilege` / `UAC (User Account Control)`
+> :o:: Requires `Administrator Privilege` / `UAC (User Account Control)`
 > 
 > :x:: Not Working
 

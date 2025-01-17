@@ -1,3 +1,4 @@
+#pragma once
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "bugprone-reserved-identifier"
 #ifndef TRIGGER_BSOD_RAISEHARDERROR_H
